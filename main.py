@@ -32,7 +32,7 @@ async def test_connection():
     connection = connect_to_database()
     if connection is not None:
         connection.close()
-        return {"status": "Conexão bem-sucedida com o banco de dados!"}
+        return {"status": "Conexão bem-sucedida com o banco de dados! v2"}
     else:
         raise HTTPException(status_code=500, detail="Falha na conexão com o banco de dados")
 
