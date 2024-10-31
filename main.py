@@ -17,6 +17,16 @@ DB_NAME = "railway"
 DB_USER = "postgres"
 DB_PASSWORD = "KOCWFRTKpnfOkVUGffqTBKpsyhMNzhpu"
 
+
+from fastapi import Request
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f"Recebendo requisição: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+
+
 def connect_to_database():
     """Função para conectar ao banco de dados PostgreSQL."""
     try:
